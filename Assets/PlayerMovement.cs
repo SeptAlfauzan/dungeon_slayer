@@ -7,8 +7,9 @@ public class PlayerMovement : MonoBehaviour
     // public Transform transform;
     public SpriteRenderer spriteRenderer;
     public Vector2 speed = new Vector2(20, 20);
-    public Rigidbody2D rigidbody;
 
+    Vector2 input;
+    public Rigidbody2D rigidbody;
     bool isFlipped = false;
     // Start is called before the first frame update
     void Start()
@@ -16,10 +17,9 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void FixedUpdate() {
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
+    private void Update() {
+        input.x = Input.GetAxis("Horizontal");
+        input.y = Input.GetAxis("Vertical");
 
         if(Input.GetAxis("Horizontal") < 0){
             isFlipped = true;
@@ -30,10 +30,14 @@ public class PlayerMovement : MonoBehaviour
             Flip(isFlipped);
         }
 
-        Vector3 movement = new Vector3(speed.x * inputX, speed.y * inputY, 0);
+        Vector2 movement = new Vector2(speed.x * input.x, speed.y * input.y);
         movement *= Time.deltaTime;
 
-        transform.Translate(movement);
+        rigidbody.MovePosition(rigidbody.position + movement);
+    }
+        // Update is called once per frame
+    void FixedUpdate() {
+        
     }
     void Flip(bool isFlipped){
         spriteRenderer.flipX = isFlipped;
