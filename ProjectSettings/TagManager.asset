@@ -16,7 +16,7 @@ TagManager:
   - 
   - player
   - wall
-  - 
+  - Enemies
   - 
   - 
   - 
@@ -50,4 +50,7 @@ TagManager:
     locked: 0
   - name: Moving Object
     uniqueID: 949854599
+    locked: 0
+  - name: New Layer
+    uniqueID: 4244278643
     locked: 0
