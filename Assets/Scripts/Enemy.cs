@@ -16,7 +16,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        currentHealth = currentHealth - damage;
+        Debug.Log("current health" + currentHealth);
         animator.SetTrigger("Damaged");
         if(currentHealth <= 0){
             Die();
@@ -27,5 +28,6 @@ public class Enemy : MonoBehaviour
         Debug.Log("im dead");
         animator.SetBool("Dead", true);
         this.enabled = false;
+        // animator.SetBool("Dead", false);
     }
 }
