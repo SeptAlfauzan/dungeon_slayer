@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
         float animatorSpeed = GetSetSpeedAnimator(input);
         PlayerAnimator.SetFloat("Speed", animatorSpeed);
 
-    Debug.Log(animatorSpeed);
         if(Input.GetAxis("Horizontal") < 0){
             isFlipped = true;
             Flip(isFlipped);
