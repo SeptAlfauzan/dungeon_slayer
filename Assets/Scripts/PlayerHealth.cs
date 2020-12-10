@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Healthbar healthbar;
     public int maxHealth = 100;
+    int currentHealth;
+    
+    private void Start() {
+        currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);    
+    }
     // Start is called before the first frame update
     public void TakeDamage(int damage)
 	{
-		maxHealth -= damage;
-        Debug.Log("attacked");
+		currentHealth -= damage;
+        healthbar.SetHealth(currentHealth);
+
+        // Debug.Log("attacked");
         GetComponent<PlayerMovement>().PlayerAnimator.SetTrigger("Damaged");
-		if (maxHealth <= 0)
+		if (currentHealth <= 0)
 		{
 			Die();
 		}

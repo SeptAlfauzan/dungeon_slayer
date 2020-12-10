@@ -25,10 +25,6 @@ public class Attack1 : MonoBehaviour
 		}
 	}
 
-    public void blabla(){
-
-    }
-
 	// public void EnragedAttack()
 	// {
 	// 	Vector3 pos = transform.position;

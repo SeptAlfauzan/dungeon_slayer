@@ -10,10 +10,12 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer enemy;
     public Transform player;
     int currentHealth;
+    public Healthbar healthbar;
     // Rigidbody2D rigidbody;
     void Start()
     {
         currentHealth = maxhealth;
+        healthbar.SetMaxHealth(maxhealth);
     }
 
     void Update() {
@@ -29,7 +31,9 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         animator.SetTrigger("Damaged");
-        currentHealth = currentHealth - damage;
+        currentHealth -= damage;
+        healthbar.SetHealth(currentHealth);
+
         Debug.Log("current health" + currentHealth);
         if(currentHealth <= 0){
             // Rigidbody2D.constraints =  RigidbodyConstraints2D.FreezeAll;
