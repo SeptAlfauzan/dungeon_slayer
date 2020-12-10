@@ -11,6 +11,12 @@ public class Attack1 : MonoBehaviour
 	public float attackRange = 1f;
 	public LayerMask attackMask;
 
+	PlayerDodges playerDodges;
+
+	private void Start() {
+		playerDodges = GetComponent<PlayerDodges>();
+	}
+
 	public void Attack()
 	{
 		Vector3 pos = transform.position;
@@ -18,8 +24,9 @@ public class Attack1 : MonoBehaviour
 		pos += transform.up * attackOffset.y;
 
 		Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
-		if (colInfo != null)
+		if (colInfo != null && !GameObject.Find("Player").GetComponent<PlayerDodges>().getDodgeVal())
 		{
+			Debug.Log(GameObject.Find("Player").GetComponent<PlayerDodges>().getDodgeVal());
             Debug.Log(colInfo);
 			colInfo.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
 		}
