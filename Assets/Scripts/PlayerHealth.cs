@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
 		if (currentHealth <= 0)
 		{
 			Die();
+            ShowDeathScreen();
 		}
 	}
 
@@ -39,5 +40,10 @@ public class PlayerHealth : MonoBehaviour
         {
             collider.enabled = false;
         }
+    }
+
+    void ShowDeathScreen(){
+        var deathScreen = GameObject.Find("Player Died Screen").GetComponent<Canvas>();
+        deathScreen.enabled = true;
     }
 }
